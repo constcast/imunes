@@ -481,6 +481,9 @@ proc loadCfg { cfg } {
 			docker-attach {
 			    lappend $object "docker-attach $value"
 			}
+			docker-another {
+			    lappend $object "docker-another $value"
+			}
 			events {
 			    set cfg ""
 			    foreach zline [split $value {

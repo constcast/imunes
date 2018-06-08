@@ -2710,6 +2710,24 @@ proc getNodeDockerAttach { node } {
     }
 }
 
+#****f* nodecfg.tcl/getNodeDockerAnother
+# NAME
+#   getNodeDockerAnother -- get node docker another image.
+# SYNOPSIS
+#   set value [getNodeDockerAnother $node]
+# FUNCTION
+#   Returns node docker image setting.
+# INPUTS
+#   * node -- node id
+# RESULT
+#   * status -- another image enabled
+#****
+proc getNodeDockerAnother { node } {
+    upvar 0 ::cf::[set ::curcfg]::$node $node
+
+    return [lindex [lsearch -inline [set $node] "docker-another *"] 1]
+}
+
 #****f* nodecfg.tcl/setNodeDockerAttach
 # NAME
 #   setNodeDockerAttach -- set node docker ext ifc attach.
@@ -2730,6 +2748,29 @@ proc setNodeDockerAttach { node enabled } {
     }
     if { $enabled == true } {
 	lappend $node [list docker-attach $enabled]
+    }
+}
+
+#****f* nodecfg.tcl/setNodeDockerAnother
+# NAME
+#   setNodeDockerAnother -- set node docker ext ifc attach.
+# SYNOPSIS
+#   setNodeDockerAnother $node $enabled
+# FUNCTION
+#   Sets node docker ext ifc attach status.
+# INPUTS
+#   * node -- node id
+#   * img -- another image
+#****
+proc setNodeDockerAnother { node img } {
+    upvar 0 ::cf::[set ::curcfg]::$node $node
+
+    set i [lsearch [set $node] "docker-another *"]
+    if { $i >= 0 } {
+	set $node [lreplace [set $node] $i $i]
+    }
+    if { $img != "" } {
+	lappend $node [list docker-another $img]
     }
 }
 
