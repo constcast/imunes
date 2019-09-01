@@ -144,7 +144,7 @@ proc $MODULE.toolbarIconDescr {} {
 #   * size -- notebook size as {height width}
 #****
 proc $MODULE.notebookDimensions { wi } {
-    set h 210
+    set h 225
     set w 507
     
     if { [string trimleft [$wi.nbook select] "$wi.nbook.nf"] \
@@ -412,6 +412,7 @@ proc $MODULE.configGUI { c node } {
     configGUI_addTree $ifctab $node
 
     configGUI_attachDockerToExt $configtab $node
+    configGUI_anotherImage $configtab $node
     configGUI_servicesConfig $configtab $node
     configGUI_staticRoutes $configtab $node
     configGUI_snapshots $configtab $node

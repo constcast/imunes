@@ -164,7 +164,7 @@ proc $MODULE.toolbarIconDescr {} {
 #   * size -- notebook size as {height width}
 #****
 proc $MODULE.notebookDimensions { wi } {
-    set h 250
+    set h 290
     set w 507
     
     if { [string trimleft [$wi.nbook select] "$wi.nbook.nf"] \
@@ -258,6 +258,7 @@ proc $MODULE.configGUI { c node } {
 	    "MACaddr MAC addr" "MTU MTU" "QLen Queue len" "QDisc Queue disc" "QDrop Queue drop" }
     configGUI_addTree $ifctab $node
 
+    configGUI_anotherImage $configtab $node
     configGUI_routingModel $configtab $node
     configGUI_attachDockerToExt $configtab $node
     configGUI_servicesConfig $configtab $node
